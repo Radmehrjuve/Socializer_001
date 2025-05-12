@@ -12,8 +12,8 @@ namespace Infrastructure
     {
         public SocialiazerDBContext(DbContextOptions<SocialiazerDBContext> options) : base(options) { }
         
-        DbSet<Chat> chats {  get; set; }
-        DbSet<Message> Messages { get; set; }
+        public DbSet<Chat> chats {  get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

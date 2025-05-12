@@ -11,7 +11,7 @@ namespace Domain
         public int Id { get; set; }
         public int ChatId { get; set; }
 
-        public int Role { get; set; }
+        public int Role { get; set; } // 0 user, 1 assisstant
 
         public string Content { get; set; } = string.Empty;
 
