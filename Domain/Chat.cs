@@ -11,6 +11,7 @@ namespace Domain
         public int Id { get; set; } // ChatId
         public int UserId { get; set; } // Owner
         public string Name { get; set; } = string.Empty; // Optional chat name like "Health Bot" or "Finance Q&A"
+        public string Description { get; set; } = string.Empty;
         public DateTime? TimeStamp { get; set; }
         public string AccessToken { get; set; } = string.Empty;
         public List<Message> messages { get; set; }

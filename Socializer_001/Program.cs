@@ -1,13 +1,31 @@
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Socializer_001.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+var configuration = builder.Configuration;
 builder.Services.AddDbContext<SocialiazerDBContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SocializerDataBase")));
+builder.Services.AddDbContext<AuthenticationDBContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("AuthenticationDBContextConnection")));
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+
+}).AddEntityFrameworkStores<AuthenticationDBContext>();
+
+builder.Services.AddAuthentication().AddGoogle(googleoptions =>
+{
+    googleoptions.ClientId = configuration["Authentication:Google:ClientId"];
+    googleoptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+    googleoptions.CallbackPath = "/signin-google";
+});
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -20,12 +38,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
-
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")

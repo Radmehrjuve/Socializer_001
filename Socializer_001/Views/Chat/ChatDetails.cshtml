@@ -1,0 +1,28 @@
+﻿@model Domain.DTOs.CreateChatDetail
+
+
+<div>
+    <form asp-action="CreateChatDetails">
+        <div class="row">
+            <div>
+                <label class="col-1">Name: </label>
+            </div>
+            <div class="col">
+                <input type="text" asp-for="Name" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <label>Description</label>
+            </div>
+            <div class="col">
+                <input type="text" asp-for="Description" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <button type="submit">Create</button>
+            </div>
+        </div>
+    </form>
+</div>
