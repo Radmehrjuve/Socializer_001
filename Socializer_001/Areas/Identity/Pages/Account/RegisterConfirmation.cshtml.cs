@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Socializer_001.Email_Service;
 
 namespace Socializer_001.Areas.Identity.Pages.Account
 {
@@ -18,9 +19,9 @@ namespace Socializer_001.Areas.Identity.Pages.Account
     public class RegisterConfirmationModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly IEmailSender _sender;
+        private readonly IEmailSender<IdentityUser> _sender;
 
-        public RegisterConfirmationModel(UserManager<IdentityUser> userManager, IEmailSender sender)
+        public RegisterConfirmationModel(UserManager<IdentityUser> userManager, IEmailSender<IdentityUser> sender)
         {
             _userManager = userManager;
             _sender = sender;
@@ -60,8 +61,8 @@ namespace Socializer_001.Areas.Identity.Pages.Account
 
             Email = email;
             // Once you add a real email sender, you should remove this code that lets you confirm the account
-            DisplayConfirmAccountLink = true;
-            if (DisplayConfirmAccountLink)
+            DisplayConfirmAccountLink = false;
+            if (!DisplayConfirmAccountLink)
             {
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -71,6 +72,9 @@ namespace Socializer_001.Areas.Identity.Pages.Account
                     pageHandler: null,
                     values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                     protocol: Request.Scheme);
+
+                
+                await _sender.SendConfirmationLinkAsync(user, user.Email ,"https://irna.ir");
             }
 
             return Page();

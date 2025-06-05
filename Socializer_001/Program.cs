@@ -2,6 +2,7 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Socializer_001.Areas.Identity.Data;
+using Socializer_001.Email_Service;
 //using Socializer_001.Email_Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +27,7 @@ builder.Services.AddAuthentication().AddGoogle(googleoptions =>
     googleoptions.CallbackPath = "/signin-google";
 });
 
-//builder.Services.AddTransient<IEmailSender<IdentityUser>, Socializer_001.Email_Service.EmailSender>();
+builder.Services.AddTransient<IEmailSender<IdentityUser>, EmailSender>();
 
 builder.Services.AddRazorPages();
 
