@@ -10,11 +10,11 @@ namespace Socializer_001.Email_Service
     {
         private readonly string smtpServer = "smtp.gmail.com";
         private readonly int smtpPort = 587; // 587 is recommended for STARTTLS
-        private readonly string senderEmail = "socilizerhelper@gmail.com";
-        private readonly string senderPassword = "nlmjgclhernmidog"; // Use App Password here
+        private readonly string senderEmail = "socializerhelper@gmail.com";
+        private readonly string senderPassword = "dfgxklbxelzboiay"; // Use App Password here
         public async Task SendEmailAsync(IdentityUser user,string email, string subject, string htmlMessage)
         {
-            var client = new SmtpClient("smtp.gmail.com", 587)
+            var client = new SmtpClient(smtpServer, smtpPort)
             {
                 EnableSsl = true,
                 UseDefaultCredentials = false,
@@ -22,7 +22,7 @@ namespace Socializer_001.Email_Service
             };
 
              await client.SendMailAsync(new MailMessage(
-                from: "socilizerhelper@gmail.com",
+                from: "socializerhelper@gmail.com",
                 to: email,
                 subject,
                 htmlMessage));
@@ -30,7 +30,7 @@ namespace Socializer_001.Email_Service
 
         public async Task SendConfirmationLinkAsync(IdentityUser user, string email, string confirmationLink)
         {
-            var client = new SmtpClient("smtp.gmail.com", 587)
+            var client = new SmtpClient(smtpServer, smtpPort)
             {
                 EnableSsl = true,
                 UseDefaultCredentials = false,
