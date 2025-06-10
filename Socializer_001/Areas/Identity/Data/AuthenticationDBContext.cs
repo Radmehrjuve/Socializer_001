@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Socializer_001.Models;
 
 namespace Socializer_001.Areas.Identity.Data;
 
-public class AuthenticationDBContext : IdentityDbContext<IdentityUser>
+public class AuthenticationDBContext : IdentityDbContext<ApplicationUser>
 {
     public AuthenticationDBContext(DbContextOptions<AuthenticationDBContext> options)
         : base(options)

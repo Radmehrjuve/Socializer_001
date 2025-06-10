@@ -12,16 +12,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Socializer_001.Email_Service;
+using Socializer_001.Models;
 
 namespace Socializer_001.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IEmailSender<IdentityUser> _sender;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IEmailSender<ApplicationUser> _sender;
 
-        public RegisterConfirmationModel(UserManager<IdentityUser> userManager, IEmailSender<IdentityUser> sender)
+        public RegisterConfirmationModel(UserManager<ApplicationUser> userManager, IEmailSender<ApplicationUser> sender)
         {
             _userManager = userManager;
             _sender = sender;

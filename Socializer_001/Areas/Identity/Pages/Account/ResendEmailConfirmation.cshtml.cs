@@ -13,16 +13,17 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Socializer_001.Models;
 
 namespace Socializer_001.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ResendEmailConfirmationModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IEmailSender<IdentityUser> _emailSender;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IEmailSender<ApplicationUser> _emailSender;
 
-        public ResendEmailConfirmationModel(UserManager<IdentityUser> userManager, IEmailSender<IdentityUser> emailSender)
+        public ResendEmailConfirmationModel(UserManager<ApplicationUser> userManager, IEmailSender<ApplicationUser> emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;

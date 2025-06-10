@@ -1,18 +1,19 @@
 ﻿using Azure.Core;
 using Microsoft.AspNetCore.Identity;
+using Socializer_001.Models;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace Socializer_001.Email_Service
 {
-    public class EmailSender : IEmailSender<IdentityUser>
+    public class EmailSender : IEmailSender<ApplicationUser>
     {
         private readonly string smtpServer = "smtp.gmail.com";
         private readonly int smtpPort = 587; // 587 is recommended for STARTTLS
         private readonly string senderEmail = "socializerhelper@gmail.com";
         private readonly string senderPassword = "dfgxklbxelzboiay"; // Use App Password here
-        public async Task SendEmailAsync(IdentityUser user,string email, string subject, string htmlMessage)
+        public async Task SendEmailAsync(ApplicationUser user,string email, string subject, string htmlMessage)
         {
             var client = new SmtpClient(smtpServer, smtpPort)
             {
@@ -28,7 +29,7 @@ namespace Socializer_001.Email_Service
                 htmlMessage));
         }
 
-        public async Task SendConfirmationLinkAsync(IdentityUser user, string email, string confirmationLink)
+        public async Task SendConfirmationLinkAsync(ApplicationUser user, string email, string confirmationLink)
         {
             var client = new SmtpClient(smtpServer, smtpPort)
             {
@@ -58,7 +59,7 @@ namespace Socializer_001.Email_Service
             await client.SendMailAsync(mailMessage);
         }
 
-        public async Task SendPasswordResetLinkAsync(IdentityUser user, string email, string resetlink)
+        public async Task SendPasswordResetLinkAsync(ApplicationUser user, string email, string resetlink)
         {
             //var client = new SendGridClient(config["SendGrid:ApiKey"]);
             //var from = new EmailAddress("newsradmehr@gmail.com", "Socializer");
@@ -69,7 +70,7 @@ namespace Socializer_001.Email_Service
             //await client.SendEmailAsync(msg);
         }
 
-        public async Task SendPasswordResetCodeAsync(IdentityUser user, string email, string resetCode)
+        public async Task SendPasswordResetCodeAsync(ApplicationUser user, string email, string resetCode)
         {
             //var client = new SendGridClient(config["SendGrid:ApiKey"]);
             //var from = new EmailAddress("newsradmehr@gmail.com", "Socializer");

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Socializer_001.Areas.Identity.Data;
 using Socializer_001.Email_Service;
+using Socializer_001.Models;
 //using Socializer_001.Email_Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,7 @@ builder.Services.AddDbContext<SocialiazerDBContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SocializerDataBase")));
 builder.Services.AddDbContext<AuthenticationDBContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("AuthenticationDBContextConnection")));
-builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = true;
 
@@ -27,7 +28,7 @@ builder.Services.AddAuthentication().AddGoogle(googleoptions =>
     googleoptions.CallbackPath = "/signin-google";
 });
 
-builder.Services.AddTransient<IEmailSender<IdentityUser>, EmailSender>();
+builder.Services.AddTransient<IEmailSender<ApplicationUser>, EmailSender>();
 
 builder.Services.AddRazorPages();
 
