@@ -15,7 +15,7 @@ namespace Infrastructure
         
         public DbSet<Chat> chats {  get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<> Cryptocurrencies { get; set; }
+        public DbSet<Crypto> Cryptocurrencies { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
@@ -29,6 +29,20 @@ namespace Infrastructure
             modelBuilder.Entity<Chat>().HasKey(c => c.Id);
             modelBuilder.Entity<Message>().HasKey(m => m.Id);
             modelBuilder.Entity<Chat>().Property(m => m.Id).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Crypto>()
+               .Property(c => c.Price)
+               .HasPrecision(18, 4);
+           
+            modelBuilder.Entity<Order>()
+                .Property(o => o.TotalAmount)
+                .HasPrecision(18, 4);
+            modelBuilder.Entity<OrderItem>()
+                .Property(oi => oi.Quantity)
+                .HasPrecision(18, 8);
+            modelBuilder.Entity<OrderItem>()
+                .Property(oi => oi.UnitPrice)
+                .HasPrecision(18, 4);
         }
     }
 }

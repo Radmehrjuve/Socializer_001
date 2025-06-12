@@ -16,6 +16,49 @@
                 <label asp-for="Username" class="form-label"></label>
             </div>
             <div class="form-floating mb-3">
+                <input asp-for="Input.FirstName" class="form-control" placeholder="Enter your first name" />
+                <label asp-for="Input.FirstName" class="form-label"></label>
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.FamilyName" class="form-control" placeholder="Enter your family name" />
+                <label asp-for="Input.FamilyName" class="form-label"></label>
+                <span asp-validation-for="Input.FamilyName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Country" class="form-control" placeholder="Enter your country" />
+                <label asp-for="Input.Country" class="form-label"></label>
+                <span asp-validation-for="Input.Country" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Address" class="form-control" placeholder="Enter your address" />
+                <label asp-for="Input.Address" class="form-label"></label>
+                <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Field" class="form-control" placeholder="Enter your field of study" />
+                <label asp-for="Input.Field" class="form-label"></label>
+                <span asp-validation-for="Input.Field" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.EnteredYear" class="form-control" placeholder="Enter your entered year" />
+                <label asp-for="Input.EnteredYear" class="form-label"></label>
+                <span asp-validation-for="Input.EnteredYear" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Input.Sex" class="form-control">
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+                <label asp-for="Input.Sex" class="form-label"></label>
+                <span asp-validation-for="Input.Sex" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ArrivalDate" class="form-control" type="date" />
+                <label asp-for="Input.ArrivalDate" class="form-label"></label>
+                <span asp-validation-for="Input.ArrivalDate" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
                 <input asp-for="Input.PhoneNumber" class="form-control"/>
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
