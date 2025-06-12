@@ -35,6 +35,28 @@ namespace Services
             Customer cr = await GetCustomerData(Id);
             return cr.Orders.ToList();
         }
-
+        public async Task UpdateCustomer(Customer customer)
+        {
+            Customer cr = await GetCustomerData(customer.Id);
+            if (cr != null)
+            {
+                cr.Email = customer.Email;
+                cr.WalletAddress = customer.WalletAddress;
+                cr.Name = customer.Name;
+                await socialiazerDBContext.SaveChangesAsync();
+            }
+        }
+        public async Task DeleteCustomer(int Id)
+        {
+            Customer cr = await GetCustomerData(Id);
+            socialiazerDBContext.Customers.Remove(cr);
+            await socialiazerDBContext.SaveChangesAsync();
+        }
+        public async Task AddCustomer(Customer customer)
+        {
+            await socialiazerDBContext.Customers.AddAsync(customer);
+            await socialiazerDBContext.SaveChangesAsync();
+        }
+        
     }
 }
