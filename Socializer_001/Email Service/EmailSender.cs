@@ -12,7 +12,7 @@ namespace Socializer_001.Email_Service
         private readonly string smtpServer = "smtp.gmail.com";
         private readonly int smtpPort = 587; // 587 is recommended for STARTTLS
         private readonly string senderEmail = "socializerhelper@gmail.com";
-        private readonly string senderPassword = "dfgxklbxelzboiay"; // Use App Password here
+        private readonly string senderPassword = "Heh, Biya Kire Mano Bokhor Akhe Ma.....e"; // Use App Password here
         public async Task SendEmailAsync(ApplicationUser user,string email, string subject, string htmlMessage)
         {
             var client = new SmtpClient(smtpServer, smtpPort)

@@ -35,6 +35,8 @@ builder.Services.AddScoped<GetUserOptionalDataAsync>();
 builder.Services.AddScoped<CustomerDataService>();
 builder.Services.AddScoped<CryptoDataService>();
 builder.Services.AddScoped<OrderDataService>();
+builder.Services.AddScoped<OrderItemsDataService>();
+
 
 builder.Services.AddRazorPages();
 
