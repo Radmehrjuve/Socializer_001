@@ -59,13 +59,38 @@ namespace Socializer_001.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Display(Name = "Family Name")]
+            public string FamilyName { get; set; }
+
+            [Display(Name = "Country")]
+            public string Country { get; set; }
+
+            [Display(Name = "Address")]
+            public string Address { get; set; }
+
+            [Display(Name = "Field of Study")]
+            public string Field { get; set; }
+
+            [Display(Name = "Entered Year")]
+            public string EnteredYear { get; set; }
+
+            [Display(Name = "Sex")]
+            public short Sex { get; set; }
+
+            [Display(Name = "Arrival Date")]
+            [DataType(DataType.Date)] 
+            public DateOnly? ArrivalDate { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
+            
             Username = userName;
 
             Input = new InputModel

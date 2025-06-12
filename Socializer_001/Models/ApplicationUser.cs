@@ -10,5 +10,8 @@ namespace Socializer_001.Models
         public string? Address { get; set; }
         public string? Field { get; set; }
         public string? EnteredYear { get; set; }
+        public short? sex { get; set; }
+        public DateOnly? ArrivalDate { get; set; }
+
     }
 }
