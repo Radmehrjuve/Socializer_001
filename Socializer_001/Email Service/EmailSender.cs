@@ -23,7 +23,7 @@ namespace Socializer_001.Email_Service
             };
 
              await client.SendMailAsync(new MailMessage(
-                from: "socializerhelper@gmail.com",
+                from: senderEmail,
                 to: email,
                 subject,
                 htmlMessage));
