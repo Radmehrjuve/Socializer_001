@@ -4,6 +4,7 @@ namespace Domain
 {
     public class Crypto
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

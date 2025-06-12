@@ -21,5 +21,8 @@ namespace Domain
         [Required]
         [Range(0.0001, double.MaxValue)]
         public decimal UnitPrice { get; set; } // Price per unit at time of purchase
+
+        [Required]
+        public string Network {  get; set; } // شبکه
     }
 }

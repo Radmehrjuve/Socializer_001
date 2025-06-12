@@ -5,6 +5,7 @@ using Socializer_001.Areas.Identity.Data;
 using Socializer_001.Email_Service;
 using Socializer_001.Models;
 using Socializer_001.Services;
+using Services;
 //using Socializer_001.Email_Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,8 @@ builder.Services.AddAuthentication().AddGoogle(googleoptions =>
 
 builder.Services.AddTransient<IEmailSender<ApplicationUser>, EmailSender>();
 builder.Services.AddScoped<GetUserOptionalDataAsync>();
+builder.Services.AddScoped<CustomerDataService>();
+builder.Services.AddScoped<CryptoDataService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

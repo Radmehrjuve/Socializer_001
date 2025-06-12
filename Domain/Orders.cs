@@ -4,6 +4,7 @@ namespace Domain
 {
     public class Order
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
